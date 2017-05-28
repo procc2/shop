@@ -43,6 +43,8 @@ public class ProductDAO {
         }
         return product;
     }
+	
+  
 	public static void main(String[] args) throws SQLException {
 		ProductDAO dao= new ProductDAO();
 		for(Product p: dao.getListProductbyCategory(1)){

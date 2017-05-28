@@ -154,6 +154,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			category_id=request.getParameter("category");
 			
 		}
+		Cart cart = (Cart)session.getAttribute("cart");
+		if(cart== null ){
+			cart=new Cart();
+			session.setAttribute("cart", cart);
+		}
 	%>
 	<jsp:include page="header.jsp"></jsp:include>
 
@@ -197,13 +202,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<span class="in-dollar">$</span><span><%=p.getProductPrice() %>></span><span>0</span>
 
 									</p>
+									<div class="clearfix"></div>
+
+								</div>
 									<%
 										}
 									%>
 
-									<div class="clearfix"></div>
-
-								</div>
 
 
 
