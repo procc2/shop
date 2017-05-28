@@ -57,8 +57,8 @@ public class Cart {
     public void removeToCart(Long key) {
         boolean check = cartItems.containsKey(key);
         if (check) {
+        	count-= cartItems.get(key).getQuantity();
             cartItems.remove(key);
-            count-=cartItems.values().size();
         }
     }
 
