@@ -1,5 +1,4 @@
 
-<%@page import="Model.User"%>
 <%@page import="Model.Category"%>
 <%@page import="DAO.categoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,10 +12,6 @@
 <body>
 	<%
 		categoryDAO CategoryDAO= new categoryDAO();
-		User user =null;
-		if(session.getAttribute("user")!= null){
-			user=(User)session.getAttribute("user");
-		}
 	%>
 	<!--header-->
 	<div class="header">
@@ -28,13 +23,7 @@
 					</div>
 					<div class="header-in">
 						<ul class="icon1 sub-icon1">
-						<%
-							if(user!= null){
-						%>
-							<li><a href="wishlist.html"><%=user.getUserMail() %></a></li>
-							<%
-							}
-							%>
+							<li><a href="wishlist.html">WISH LIST (0)</a></li>
 							<li><a href="account.html"> MY ACCOUNT</a></li>
 							<li><a href="#"> SHOPPING CART</a></li>
 							<li><a href="checkout.html">CHECKOUT</a></li>

@@ -14,22 +14,20 @@ import DAO.UserDAO;
  */
 @WebServlet("/CheckEmailServlet")
 public class CheckEmailServlet extends HttpServlet {
-	UserDAO usersDAO = new UserDAO();
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		
+	UserDAO userDAO = new UserDAO();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		if (usersDAO.checkEmail(request.getParameter("username"))) {
-			response.getWriter().write("<img src=\"img/not-available.png\" />");
-		} else {
-			response.getWriter().write("<img src=\"img/available.png\" />");
-		}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 if (userDAO.checkEmail(request.getParameter("username"))) {
+	            response.getWriter().write("<img src=\"img/not-available.png\" />");
+	        } else {
+	            response.getWriter().write("<img src=\"img/available.png\" />");
+	        }
 	}
 
 }
