@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-
 import connect.JDBConnect;
 import Model.Product;
 public class ProductDAO {
@@ -28,7 +26,23 @@ public class ProductDAO {
 			list.add(product);
 		}
 		return list;
+	
 	}
+	public Product getProduct(long productID) throws SQLException {
+        Connection connection = JDBConnect.getConnection();
+        String sql = "SELECT * FROM product WHERE id_product = '" + productID + "'";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        Product product = new Product();
+        while (rs.next()) {
+            product.setProductID(rs.getLong("id_product"));
+            product.setProductName(rs.getString("product_name"));
+            product.setProductImage(rs.getString("product_image"));
+            product.setProductPrice(rs.getDouble("product_price"));
+            product.setProductDescription(rs.getString("product_description"));
+        }
+        return product;
+    }
 	public static void main(String[] args) throws SQLException {
 		ProductDAO dao= new ProductDAO();
 		for(Product p: dao.getListProductbyCategory(1)){
