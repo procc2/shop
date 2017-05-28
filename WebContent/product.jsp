@@ -174,19 +174,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						<div class="col-md">
 
-							<a href="single.html"><img src="<%=p.getProductImage() %>" alt="<%=p.getProductName() %>" /></a>
+							<a href="single.jsp?productID=<%= p.getProductID() %>"><img src="<%=p.getProductImage() %>" alt="<%=p.getProductName() %>" /></a>
 
 							<div class="top-content">
 
 								<h5>
 
-									<a href="single.html"><%=p.getProductName() %></a>
+									<a href="single.jsp?productID=<%= p.getProductID() %>"><%=p.getProductName() %></a>
 
 								</h5>
 
 								<div class="white">
 
-									<a href="single.html"
+									<a href="single.jsp?productID=<%= p.getProductID() %>"
 
 										class="hvr-shutter-in-vertical hvr-shutter-in-vertical2 ">ADD
 
