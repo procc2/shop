@@ -10,11 +10,11 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-  	<servlet-name>CartServlet</servlet-name>
-  	<servlet-class>controller.CartServlet</servlet-class>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>controller.CartServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>CartServlet</servlet-name>
- 	<url-pattern>/CartServlet</url-pattern>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/CartServlet</url-pattern>
   </servlet-mapping>
 </web-app>

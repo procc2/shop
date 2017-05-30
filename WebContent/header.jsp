@@ -41,7 +41,7 @@
 							<li><a href="wishlist.html">WISH LIST (0)</a></li>
 							<li><a href="account.html"> MY ACCOUNT</a></li>
 							<li><a href="#"> SHOPPING CART</a></li>
-							<li><a href="checkout.html">CHECKOUT</a></li>
+							<li><a href="checkout.jsp">CHECKOUT</a></li>
 							<li><div class="cart">
 									<a href="#" class="cart-in"> </a> <span> <%=cart.countItem() %></span>
 								</div>
@@ -74,7 +74,7 @@
 									</div>
 									<div class="login_buttons">
 										<div class="check_button">
-											<a href="checkout.html">Check out</a>
+											<a href="checkout.jsp">Check out</a>
 										</div>
 										<div class="clearfix"></div>
 									</div>
