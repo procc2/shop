@@ -1,3 +1,4 @@
+<%@page import="Model.Cart"%>
 <%@page import="Model.Product"%>
 <%@page import="DAO.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -64,6 +65,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			product_id = request.getParameter("productID");
 			p = dao.getProduct(Long.parseLong(product_id));
 		}
+// 		
 	%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="container">
@@ -80,7 +82,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="single-para">
 						<h4><%=p.getProductName()%></h4>
 						<div class="para-grid">
-							<span class="add-to"><%=p.getProductPrice()%></span> <a href="#"
+							<span class="add-to"><%=p.getProductPrice()%></span> <a href="CartServlet?command=plus&productID=<%= p.getProductID() %>"
 								class="hvr-shutter-in-vertical cart-to">Add to Cart</a>
 							<div class="clearfix"></div>
 						</div>

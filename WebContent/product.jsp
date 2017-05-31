@@ -1,6 +1,7 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="DAO.ProductDAO"%>
 <%@page import="Model.*"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 
 	pageEncoding="ISO-8859-1"%>
 
@@ -10,7 +11,7 @@
 
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 
@@ -148,10 +149,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<%
 		ProductDAO productDAO= new ProductDAO();
-		String category_id=null;
-		if(request.getParameter("category")!= null){
+		long category_id=0;
+		if(request.getParameter("categoryID")!= null){
 			
-			category_id=request.getParameter("category");
+			category_id=Long.parseLong(request.getParameter("categoryID"));
 			
 		}
 		Cart cart = (Cart)session.getAttribute("cart");
@@ -159,6 +160,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			cart=new Cart();
 			session.setAttribute("cart", cart);
 		}
+		int pages = 0,firstResult=0,maxResult=0,total=0;
+		if(request.getParameter("pages")!= null){
+			pages =Integer.parseInt( request.getParameter("pages"));
+		}
+		total= productDAO.countProductbyCategory(category_id);
+		if(total <=4){
+			firstResult=0;
+			maxResult=total;
+		}else{
+			firstResult=( pages -1) * 4 ;
+			maxResult=4;
+		}
+		ArrayList<Product> listProduct=productDAO.getListProductbyPage(category_id, firstResult,maxResult);
 	%>
 	<jsp:include page="header.jsp"></jsp:include>
 
@@ -171,10 +185,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3 class="future">FEATURED</h3>
 
 				<div class="content-top-in">
-					<%
-						for(Product p : productDAO.getListProductbyCategory(Long.parseLong(category_id))){
-					%>
 
+					<%
+						for(Product p : listProduct){
+					%>
 					<div class="col-md-3 md-col">
 
 						<div class="col-md">
@@ -205,7 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="clearfix"></div>
 
 								</div>
-
+							
 
 
 
@@ -214,21 +228,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 
 					</div>
+
+					
+
 									<%
 										}
 									%>
-
-					
-
-					
-
-					
-
 					<div class="clearfix"></div>
 
 				</div>
 
 			</div>
+			
 
 			<!---->
 
@@ -558,15 +569,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				<li><a href="#"><i></i></a></li>
 
-				<li><span>1</span></li>
-
-				<li class="arrow"><a href="#">2</a></li>
-
-				<li class="arrow"><a href="#">3</a></li>
-
-				<li class="arrow"><a href="#">4</a></li>
-
-				<li class="arrow"><a href="#">5</a></li>
+				<%
+					for(int i=1;i<=(total/4)+1;i++){
+				%>
+				<li class="arrow"><a href="product.jsp?categoryID=<%=category_id%>&pages=<%=i%>"><%=i %></a></li>
+				<%
+					}
+				%>
 
 				<li><a href="#"><i class="next"> </i></a></li>
 

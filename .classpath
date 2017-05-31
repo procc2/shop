@@ -14,5 +14,10 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/jdbc-lecture-03-setting-up-dev-environment/mysql-connector-java-5.1.33-bin.jar"/>
+	<classpathentry kind="lib" path="D:/Java/Eclipse/demo/lib/dsn.jar"/>
+	<classpathentry kind="lib" path="D:/Java/Eclipse/demo/lib/imap.jar"/>
+	<classpathentry kind="lib" path="D:/Java/Eclipse/demo/lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="D:/Java/Eclipse/demo/lib/pop3.jar"/>
+	<classpathentry kind="lib" path="D:/Java/Eclipse/demo/lib/smtp.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

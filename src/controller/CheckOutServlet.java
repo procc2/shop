@@ -20,6 +20,7 @@ import Model.BillDetail;
 import Model.Cart;
 import Model.Item;
 import Model.User;
+import tools.SendMail;
 
 /**
  * Servlet implementation class CheckOutServlet
@@ -59,21 +60,24 @@ public class CheckOutServlet extends HttpServlet {
 				try {
 					long ID = new Date().getTime();
 					Bill bill = new Bill();
-					bill.setBillID(ID);
+					bill.setBillID(0);
 					bill.setAddress(address);
 					bill.setPayment(payment);
 					bill.setUserID(user.getUserID());
 					bill.setTotal(cart.totalCart());
 					bill.setDate(new Timestamp(new Date().getTime()));
+					bd.insertBill(bill);
 					for (Map.Entry<Long, Item> list : cart.getCartItems().entrySet()) {
 						bdd.insertBillDetail(new BillDetail(0, ID, list.getValue().getProduct().getProductID(),
 								list.getValue().getProduct().getProductPrice(), list.getValue().getQuantity()));
 					}
+					SendMail sm = new SendMail();
+					sm.sendMail(user.getUserMail(), "Shopping announcement", "Thank you to buy our products, Please check your bill:  "+cart.totalCart() + ", Mr "+ user.getUserMail());
 					cart = new Cart();
 					session.setAttribute("cart", cart);
 					url = "/index.jsp";
 				} catch (Exception e) {
-
+					e.printStackTrace();
 				}
 			}
 		}

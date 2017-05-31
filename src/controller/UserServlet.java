@@ -35,7 +35,7 @@ public class UserServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		switch(command){
 		case"insert":
-			user.setUserID(5);
+			user.setUserID(7);
 			user.setUserMail(request.getParameter("email"));
 			user.setUserPass(md5.encryption(request.getParameter("pass")));
 			user.setUserRole(false);

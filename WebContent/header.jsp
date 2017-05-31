@@ -51,7 +51,7 @@
 										<%for(Map.Entry<Long,Item> list : cart.getCartItems().entrySet()){ %>
 										<div class="cart_box">
 											<div class="message">
-												<div class="alert-close"></div>
+												<div class="alert-close" ></div>
 												<div class="list_img">
 													<img src="<%=list.getValue().getProduct().getProductImage()%>" class="img-responsive" alt="">
 												</div>
@@ -97,7 +97,7 @@
 							<%
 								for(Category e : CategoryDAO.getListCategory()){
 							%>		
-								<li><a href="product.jsp?category=<%= e.getCategoryID() %>"><%=e.getCategoryName() %></a></li>
+								<li><a href="product.jsp?categoryID=<%= e.getCategoryID() %>&pages=1"><%=e.getCategoryName() %></a></li>
 							<%
 								}
 							%> 
