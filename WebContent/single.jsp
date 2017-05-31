@@ -137,6 +137,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</div>
+						
+						<br/>
+						<div>
+						
+						<div class="fb-comments" data-href="http://localhost:8080/demo/single.jsp?productID=<%=p.getProductID() %>" data-width="850" data-numposts="5"></div>
+						
+						</div>
 					</div>
 					<div class="col-md-4 top-single">
 						<div class="col-md">
