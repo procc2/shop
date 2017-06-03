@@ -43,13 +43,13 @@ public class categoryDAO {
 		
 	}
 	// update category
-	public boolean updateCategory(Category c){
+	public boolean updateCategory(long categoryID,String categoryName){
 		Connection conn= JDBConnect.getConnection();
 		String sql = "update category set category_name=? where category_id = ?";
 		try {
 			PreparedStatement ps= conn.prepareStatement(sql);
-			ps.setString(1,c.getCategoryName() );
-			ps.setLong(2, c.getCategoryID());
+			ps.setString(1, categoryName );
+			ps.setLong(2, categoryID);
 			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -78,7 +78,7 @@ public class categoryDAO {
 //		for(int i=5;i<7;i++){
 //			dao.insertCategory(new Category(i,"Category "+i));
 //		}
-//		System.out.println(dao.updateCategory(new Category(5,"Sony")));
+		System.out.println(dao.updateCategory(6,"Sony"));
 		System.out.println(dao.deleteCategory(5));
 	}
 }

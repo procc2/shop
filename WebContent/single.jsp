@@ -1,12 +1,14 @@
+<%@page import="Model.Category"%>
+<%@page import="DAO.categoryDAO"%>
 <%@page import="Model.Cart"%>
 <%@page import="Model.Product"%>
 <%@page import="DAO.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -16,7 +18,7 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
 <meta name="keywords"
 	content="Bonfire Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
@@ -58,6 +60,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 	<%
+	
+		categoryDAO CategoryDAO= new categoryDAO();
 		ProductDAO dao = new ProductDAO();
 		String product_id = null;
 		Product p = new Product();
@@ -187,11 +191,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="single-bottom">
 					<h4>Categories</h4>
 					<ul>
-						<li><a href="#"><i> </i>Fusce feugiat</a></li>
-						<li><a href="#"><i> </i>Mascot Kitty</a></li>
-						<li><a href="#"><i> </i>Fusce feugiat</a></li>
-						<li><a href="#"><i> </i>Mascot Kitty</a></li>
-						<li><a href="#"><i> </i>Fusce feugiat</a></li>
+					<%
+								for(Category e : CategoryDAO.getListCategory()){
+							%>		
+						<li><a href="product.jsp?categoryID=<%= e.getCategoryID() %>"><i> </i><%=e.getCategoryName() %></a></li>
+						<%} %>
 					</ul>
 				</div>
 				<div class="single-bottom">

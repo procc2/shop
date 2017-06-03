@@ -1,3 +1,8 @@
+<%@page import="DAO.ProductDAO"%>
+<%@page import="Model.Category"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="DAO.categoryDAO"%>
+<%@page import="Model.Product"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,38 +15,50 @@
 <link href="${root}/css/mos-style.css" rel='stylesheet' type='text/css' />
 </head>
 <body>
+	<%
+		categoryDAO dao = new categoryDAO();
+		ArrayList<Category> list =dao.getListCategory();
+		ProductDAO p_dao = new ProductDAO();
+		
+	%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div id="wrapper">
 		<jsp:include page="menu.jsp"></jsp:include>
 		<div id="rightContent">
 			<h3>Tabel</h3>
-
-			<div class="informasi">ini adalah notifikasi pertanda informasi
-			</div>
-
-			<div class="gagal">ini adalah notifikasi pertanda gagal</div>
-
-			<div class="sukses">ini adalah notifikasi pertanda sukses</div>
+			<h4><a href="${root}/admin/insertProduct.jsp"> Want more product ..</a></h4>
 			<table class="data">
 				<tr class="data">
 					<th class="data" width="30px">No</th>
-					<th class="data">Nama</th>
-					<th class="data">Email</th>
-					<th class="data">Telepon</th>
-					<th class="data" width="75px">Pilihan</th>
+					<th class="data">Product ID</th>
+					<th class="data">Category ID</th>
+					<th class="data">Product Name</th>
+					<th class="data">Product Image Link</th>
+					<th class="data">Product Price</th>
+					<th class="data" width="75px">Option</th>
 				</tr>
+				<%
+					int count =0;
+					for(Category c: list){
+					ArrayList<Product> p_list=p_dao.getListProductbyCategory(c.getCategoryID());
+					for(Product p : p_list){
+						count++;
+				%>
 				<tr class="data">
-					<td class="data" width="30px">1</td>
-					<td class="data">Data Anda</td>
-					<td class="data">Data Anda</td>
-					<td class="data">Data Anda</td>
-					<td class="data" width="75px">
+					<td class="data" width="30px"><%=count %></td>
+					<td class="data"><%=p.getProductID() %></td>
+					<td class="data"><%=c.getCategoryID() %></td>
+					<td class="data"><%=p.getProductName() %></td>
+					<td class="data"><%=p.getProductImage() %></td>
+					<td class="data"><%=p.getProductPrice() %></td>
+					<td class="data" width="90px">
 						<center>
-							<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-							<a href="#"><img src="mos-css/img/detail.png"></a>
+							<a href="/demo/admin/updateProduct.jsp?command=updateP&productID=<%=p.getProductID()%>"><img src="../img/icon-left.png"></a>&nbsp;&nbsp; | &nbsp;&nbsp;
+							<a href="/demo/ManagerProductServlet?command=deleteP&productID=<%=p.getProductID()%>"><img src="../img/not-available.png"></a>
 						</center>
 					</td>
 				</tr>
+				<%}} %>
 
 			</table>
 		</div>

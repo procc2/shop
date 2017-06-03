@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Manager Category</title>
+<title>Update Category</title>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <link href="${root}/css/mos-style.css" rel='stylesheet' type='text/css' />
 </head>
@@ -16,7 +16,7 @@
 		<jsp:include page="menu.jsp"></jsp:include>
 		<div id="rightContent">
 	<h3>Form</h3>
-	<form action="${root}/ManagerCategoryServlet" method ="post">
+	<form action="/demo/ManagerCategoryServlet" method ="post">
 		<table width="95%">
 			<tr><% 
 		if(request.getAttribute("error")!= null){
@@ -27,7 +27,8 @@
 			<tr><td width="125px" style="float: right"><b>Category name</b></td>
 			<td><input type="text" class="pendek" name ="categoryName"></td></tr>
 			<tr><td></td><td>
-			<input type="hidden" name = "command" value = "insertP">
+			<input type="hidden" name = "command" value = "update">
+			<input type="hidden" name = "categoryID" value = "<%=request.getParameter("categoryID") %>">
 			<input type="submit" class="button" value="Submit">
 			</td></tr>
 		</table>

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import connect.JDBConnect;
+import Model.Category;
 import Model.Product;
 public class ProductDAO {
 	//get danh sách sản phẩm dựa vào mã danh mục
@@ -75,11 +76,66 @@ public class ProductDAO {
 		}
 		return count;
 	}
+	
+	// insert Product
+		public boolean insertProduct(Product c){
+			Connection conn= JDBConnect.getConnection();
+			String sql = "insert into product values(?,?,?,?,?,?)";
+			try {
+				PreparedStatement ps= conn.prepareStatement(sql);
+				ps.setLong(1, c.getProductID());
+				ps.setString(2, c.getProductName());
+				ps.setString(3, c.getProductImage());
+				ps.setLong(4, c.getCategoryID());
+				ps.setDouble(5, c.getProductPrice());
+				ps.setString(6, c.getProductDescription());
+				return ps.executeUpdate() == 1;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return false;
+			
+		}
+		// update category
+		public boolean updateProduct(Product p){
+			Connection conn= JDBConnect.getConnection();
+			String sql = "update product set product_name=?,product_image=?,product_price=?,product_description=?,category_id=? where id_product = ?";
+			try {
+				PreparedStatement ps= conn.prepareStatement(sql);
+				ps.setString(1, p.getProductName() );
+				ps.setString(2, p.getProductImage());
+				ps.setDouble(3, p.getProductPrice());
+				ps.setString(4, p.getProductDescription());
+				ps.setLong(5, p.getCategoryID());
+				ps.setLong(6, p.getProductID());
+				return ps.executeUpdate() == 1;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return false;
+			
+		}
+		//delte category
+		public boolean deleteProduct(long id_product ){
+			Connection conn= JDBConnect.getConnection();
+			String sql ="Delete from  product where id_product = ?";
+			try {
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setLong(1,id_product );
+				return ps.executeUpdate()==1;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return false;
+		}
 	public static void main(String[] args) throws SQLException {
 		ProductDAO dao= new ProductDAO();
-		for(Product p: dao.getListProductbyCategory(1)){
-			System.out.println(p.getProductID()+ " - " + p.getProductName());
-		}
-		System.out.println(dao.countProductbyCategory(1));
+//		for(Product p: dao.getListProductbyCategory(1)){
+//			System.out.println(p.getProductID()+ " - " + p.getProductName());
+//		}
+		System.out.println(dao.updateProduct(new Product(7, 5, "Mipad 2", "", 200, "")));
 	}
 }

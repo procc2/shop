@@ -18,7 +18,6 @@
 	
 		<form action="${root}/ManagerProductServlet" method ="post">
 		<table width="95%">
-			<tr><td width="125px"><b>Product ID</b></td><td><input type="text" name="productID" class="pendek"></td></tr>
 			<tr><td><b>Product Name</b></td><td><input type="text" name="productName" class="panjang"></td></tr>
 			<tr><td><b >Category ID</b></td><td>
 				<input type="radio" name="categoryID" id="radio" value="1">Apple
@@ -31,7 +30,8 @@
 			<tr><td width="125px"><b>Product Image</b></td><td><input type="file" class="pendek" name = "productImage"></td></tr>
 			<tr><td><b>Textarea</b></td><td><textarea name="productDes"></textarea></td></tr>
 			<tr><td></td><td>
-			<input type="hidden" name="command" value="insertP">
+			<input type="hidden" name="command" value="updateP">
+			<input type="hidden" name = "productID" value = "<%=request.getParameter("productID") %>">
 			<input type="submit" class="button" value="Submit">
 			<input type ="reset" class="button" value= "Reset">
 			</td></tr>

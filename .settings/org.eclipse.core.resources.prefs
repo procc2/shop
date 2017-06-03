@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/admin/manager_category.jsp=UTF-8
+encoding//WebContent/admin/manager_product.jsp=UTF-8
 encoding//WebContent/product.jsp=UTF-8
 encoding//src/DAO/ProductDAO.java=UTF-8

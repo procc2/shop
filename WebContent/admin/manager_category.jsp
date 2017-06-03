@@ -22,7 +22,7 @@
 		<jsp:include page="menu.jsp"></jsp:include>
 		<div id="rightContent">
 			<h3>Category Table</h3>
-			<a href="insertCategory.jsp"> Want more category ..</a>
+			<a href="${root}/admin/insertCategory.jsp"> Want more category ..</a>
 			<table class="data">
 				<tr class="data">
 					<th class="data" width="30px">No</th>
@@ -41,8 +41,8 @@
 					<td class="data"><%=c.getCategoryName() %></td>
 					<td class="data" width="90px">
 						<center>
-							<a href="#"><img src="../img/icon-left.png"></a>&nbsp;&nbsp; | &nbsp;&nbsp;
-							<a href="#"><img src="../img/not-available.png"></a>
+							<a href="/demo/admin/updateCategory.jsp?command=update&categoryID=<%=c.getCategoryID()%>"><img src="../img/icon-left.png"></a>&nbsp;&nbsp; | &nbsp;&nbsp;
+							<a href="/demo/ManagerCategoryServlet?command=delete&categoryID=<%=c.getCategoryID()%>"><img src="../img/not-available.png"></a>
 						</center>
 					</td>
 				</tr>
