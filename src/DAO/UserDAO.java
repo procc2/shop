@@ -65,4 +65,27 @@ public class UserDAO {
 		}
 		return null;
 	}
+	public User getUser(long userID){
+		Connection conn= JDBConnect.getConnection();
+		String sql= "select * from users where user_id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setLong(1, userID);
+			ResultSet rs = ps.executeQuery();
+			User u = new User();
+			while(rs.next()){
+				u.setUserMail(rs.getString("user_email"));
+			}
+			return u;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	public static void main(String[] args) {
+		UserDAO dao= new UserDAO();
+		System.out.println(dao.getUser(1).getUserMail());
+	}
 }

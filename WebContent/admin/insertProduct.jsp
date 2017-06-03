@@ -1,3 +1,5 @@
+<%@page import="Model.Category"%>
+<%@page import="DAO.categoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,6 +12,9 @@
 <link href="${root}/css/mos-style.css" rel='stylesheet' type='text/css' />
 </head>
 <body>
+	<%
+		categoryDAO dao = new categoryDAO();
+	%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div id="wrapper">
 		<jsp:include page="menu.jsp"></jsp:include>
@@ -19,13 +24,14 @@
 		<form action="${root}/ManagerProductServlet" method ="post">
 		<table width="95%">
 			<tr><td width="125px"><b>Product ID</b></td><td><input type="text" name="productID" class="pendek"></td></tr>
-			<tr><td><b>Product Name</b></td><td><input type="text" name="productName" class="panjang"></td></tr>
+			<tr><td><b>Product Name</b></td><td><input type="text" name="productName" class="panjang"></td><% 
+		if(request.getAttribute("errorN")!= null){
+	%> 
+	<td style="color:red" ><%=request.getAttribute("errorN") %></td><%} %> </tr>
 			<tr><td><b >Category ID</b></td><td>
-				<input type="radio" name="categoryID" id="radio" value="1">Apple
-				<input type="radio" name="categoryID" id="radio" value="2">Samsung
-				<input type="radio" name="categoryID" id="radio" value="3">Dell
-				<input type="radio" name="categoryID" id="radio" value="4">Asus
-				<input type="radio" name="categoryID" id="radio" value="5">Xiaomi
+			<%for(Category c : dao.getListCategory()){ %>
+				<input type="radio" name="categoryID" id="radio" value="<%=c.getCategoryID()%>"><%=c.getCategoryName()%>
+				<%} %>
 			</td></tr>
 			<tr><td width="125px"><b>Product Price</b></td><td><input type="text" name="productPrice" class="pendek"></td></tr>
 			<tr><td width="125px"><b>Product Image</b></td><td><input type="file" class="pendek" name = "productImage"></td></tr>

@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Bill {
 	private long billID;
@@ -59,5 +60,4 @@ public class Bill {
 	public void setDate(Timestamp date) {
 		this.date = date;
 	}
-	
 }

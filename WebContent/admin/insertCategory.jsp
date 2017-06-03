@@ -27,7 +27,7 @@
 			<tr><td width="125px" style="float: right"><b>Category name</b></td>
 			<td><input type="text" class="pendek" name ="categoryName"></td></tr>
 			<tr><td></td><td>
-			<input type="hidden" name = "command" value = "insertP">
+			<input type="hidden" name = "command" value = "insert">
 			<input type="submit" class="button" value="Submit">
 			</td></tr>
 		</table>

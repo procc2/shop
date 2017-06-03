@@ -82,6 +82,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span class="word">Password*</span>
 					<input type="password" name ="pass">
 				</div>
+					<a href="register.jsp"><input type ="button" value="Register"></a>
 					<input type="hidden" value="login" name="command">			
 					<input type="submit" value="Login"> 
 				</form>

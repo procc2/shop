@@ -53,13 +53,13 @@ public class ManagerProductServlet extends HttpServlet {
 		String productImage = request.getParameter("productImage");
 		double productPrice = Double.parseDouble(request.getParameter("productPrice"));
 		String productDes = request.getParameter("productDes");
-		String url = "",error="";
+		String url = "",errorN="";
 		if(productName.equals("")){
-			error ="Please input your product name";
-			request.setAttribute("error",error);
+			errorN ="Please input your product name";
+			request.setAttribute("errorN",errorN);
 		}
 		Product p=new Product(productID, categoryID, productName, productImage, productPrice, productDes);
-		if(productName.length()!=0){
+		if(errorN.equals("")){
 			switch(command){
 			case "insertP":
 				dao.insertProduct(p);
@@ -72,7 +72,7 @@ public class ManagerProductServlet extends HttpServlet {
 			}
 		}else {
 			url ="/admin/insertProduct.jsp";
-			request.getAttribute(error);
+			
 		}
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 		rd.forward(request, response);
