@@ -13,6 +13,7 @@
 			<li><a href="manager_category.jsp">Category</a></li>
 			<li><a href="manager_product.jsp">Product</a></li>
 			<li><a href="manager_bill.jsp">Bill</a></li>
+			<li><a href="/demo/chartServlet">Chart</a></li>
 		</ul>
 	</div>
 </body>

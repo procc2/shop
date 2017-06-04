@@ -53,12 +53,13 @@ public class ManagerProductServlet extends HttpServlet {
 		String productImage = request.getParameter("productImage");
 		double productPrice = Double.parseDouble(request.getParameter("productPrice"));
 		String productDes = request.getParameter("productDes");
+		long productGen= Long.parseLong(request.getParameter("productGen"));
 		String url = "",errorN="";
 		if(productName.equals("")){
 			errorN ="Please input your product name";
 			request.setAttribute("errorN",errorN);
 		}
-		Product p=new Product(productID, categoryID, productName, productImage, productPrice, productDes);
+		Product p=new Product(productID, categoryID, productName, productImage, productPrice, productDes , productGen);
 		if(errorN.equals("")){
 			switch(command){
 			case "insertP":

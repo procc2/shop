@@ -12,7 +12,7 @@ public class JDBConnect {
 		Connection myConn = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			myConn=DriverManager.getConnection("jdbc:mysql://localhost:3309/shop", "newuser" , "student");
+			myConn=DriverManager.getConnection("jdbc:mysql://localhost:3309/shop","newuser","student");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

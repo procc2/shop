@@ -5,6 +5,24 @@ public class Product {
 	private long categoryID;
 	private String productName;
 	private String productImage;
+	private long productGender;
+	public Product(long productID, long categoryID, String productName, String productImage, double productPrice,
+			String productDescription,long productGender ) {
+		super();
+		this.productID = productID;
+		this.categoryID = categoryID;
+		this.productName = productName;
+		this.productImage = productImage;
+		this.productGender = productGender;
+		this.productPrice = productPrice;
+		this.productDescription = productDescription;
+	}
+	public long getProductGender() {
+		return productGender;
+	}
+	public void setProductGender(long productGender) {
+		this.productGender = productGender;
+	}
 	public long getProductID() {
 		return productID;
 	}
@@ -28,16 +46,6 @@ public class Product {
 	}
 	public Product(){
 		
-	}
-	public Product(long productID, long categoryID, String productName, String productImage, double productPrice,
-			String productDescription) {
-		super();
-		this.productID = productID;
-		this.categoryID = categoryID;
-		this.productName = productName;
-		this.productImage = productImage;
-		this.productPrice = productPrice;
-		this.productDescription = productDescription;
 	}
 	public void setProductImage(String productImage) {
 		this.productImage = productImage;

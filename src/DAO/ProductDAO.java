@@ -24,6 +24,7 @@ public class ProductDAO {
 			product.setProductImage(rs.getString("product_image"));
 			product.setProductPrice(rs.getDouble("product_price"));
 			product.setProductDescription(rs.getString("product_description"));
+			product.setProductGender(rs.getLong("product_gender"));
 			list.add(product);
 		}
 		return list;
@@ -41,6 +42,7 @@ public class ProductDAO {
             product.setProductImage(rs.getString("product_image"));
             product.setProductPrice(rs.getDouble("product_price"));
             product.setProductDescription(rs.getString("product_description"));
+            product.setProductGender(rs.getLong("product_gender"));
         }
         return product;
     }
@@ -60,6 +62,7 @@ public class ProductDAO {
 		product.setProductImage(rs.getString("product_image"));
 		product.setProductPrice(rs.getDouble("product_price"));
 		product.setProductDescription(rs.getString("product_description"));
+		product.setProductGender(rs.getLong("product_gender"));
 		list.add(product);
 		}
 		return list;
@@ -80,7 +83,7 @@ public class ProductDAO {
 	// insert Product
 		public boolean insertProduct(Product c){
 			Connection conn= JDBConnect.getConnection();
-			String sql = "insert into product values(?,?,?,?,?,?)";
+			String sql = "insert into product values(?,?,?,?,?,?,?)";
 			try {
 				PreparedStatement ps= conn.prepareStatement(sql);
 				ps.setLong(1, c.getProductID());
@@ -89,6 +92,7 @@ public class ProductDAO {
 				ps.setLong(4, c.getCategoryID());
 				ps.setDouble(5, c.getProductPrice());
 				ps.setString(6, c.getProductDescription());
+				ps.setLong(7, c.getProductGender());
 				return ps.executeUpdate() == 1;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -136,6 +140,6 @@ public class ProductDAO {
 //		for(Product p: dao.getListProductbyCategory(1)){
 //			System.out.println(p.getProductID()+ " - " + p.getProductName());
 //		}
-		System.out.println(dao.updateProduct(new Product(7, 5, "Mipad 2", "", 200, "")));
+		System.out.println(dao.updateProduct(new Product(7, 5, "Mipad 2", "", 200, "",1)));
 	}
 }

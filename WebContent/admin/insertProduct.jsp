@@ -1,7 +1,7 @@
 <%@page import="Model.Category"%>
 <%@page import="DAO.categoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,6 +10,7 @@
 <title>Manager Product</title>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <link href="${root}/css/mos-style.css" rel='stylesheet' type='text/css' />
+<script src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 </head>
 <body>
 	<%
@@ -35,7 +36,11 @@
 			</td></tr>
 			<tr><td width="125px"><b>Product Price</b></td><td><input type="text" name="productPrice" class="pendek"></td></tr>
 			<tr><td width="125px"><b>Product Image</b></td><td><input type="file" class="pendek" name = "productImage"></td></tr>
-			<tr><td><b>Textarea</b></td><td><textarea name="productDes"></textarea></td></tr>
+			<tr><td><b>Product Description</b></td><td><textarea class="form-textarea" name="productDes" id="content"></textarea>
+			<script type="text/javascript" language="javascript">
+  				 CKEDITOR.replace('content', {width: '500px',height: '300px'});
+			</script>
+			</td></tr>
 			<tr><td></td><td>
 			<input type="hidden" name="command" value="insertP">
 			<input type="submit" class="button" value="Submit">
