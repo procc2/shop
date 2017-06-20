@@ -22,6 +22,7 @@ public class categoryDAO {
 			Category category= new Category();
 			category.setCategoryID(rs.getLong("category_id"));
 			category.setCategoryName(rs.getString("category_name"));
+			category.setProductGender(rs.getLong("product_gender"));
 			list.add(category);
 		}
 		return list;
@@ -29,11 +30,12 @@ public class categoryDAO {
 	// insert Category
 	public boolean insertCategory(Category c){
 		Connection conn= JDBConnect.getConnection();
-		String sql = "insert into category values(?,?)";
+		String sql = "insert into category values(?,?,?)";
 		try {
 			PreparedStatement ps= conn.prepareStatement(sql);
 			ps.setLong(1, c.getCategoryID());
 			ps.setString(2, c.getCategoryName());
+			ps.setLong(3, c.getProductGender());
 			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -75,10 +77,6 @@ public class categoryDAO {
 	}
 	public static void main(String[] args) throws SQLException {
 		categoryDAO dao =new categoryDAO();
-//		for(int i=5;i<7;i++){
-//			dao.insertCategory(new Category(i,"Category "+i));
-//		}
-		System.out.println(dao.updateCategory(6,"Sony"));
-		System.out.println(dao.deleteCategory(5));
+		
 	}
 }

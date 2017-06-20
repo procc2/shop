@@ -1,3 +1,6 @@
+<%@page import="Model.Product"%>
+<%@page import="DAO.ProductDAO"%>
+<%@page import="java.util.Random"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,88 +10,64 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+		ProductDAO dao = new ProductDAO();
+	%>
 	<div class="container">
 		<div class="content">
 			<div class="content-top">
 				<h3 class="future">FEATURED</h3>
 				<div class="content-top-in">
+					<%
+						for (int i = 0; i < 4; i++) {
+							Random r = new Random();
+							int rand = r.nextInt(14);
+							Product p =dao.getProduct(rand);
+					%>
 					<div class="col-md-3 md-col">
+
 						<div class="col-md">
-							<a href="single.html"><img src="images/pi.jpg" alt="" /></a>
+
+							<a href="single.jsp?productID=<%=p.getProductID()%>"><img
+								src="<%=p.getProductImage()%>" alt="<%=p.getProductName()%>" /></a>
+
 							<div class="top-content">
+
 								<h5>
-									<a href="single.html">Mascot Kitty - White</a>
+
+									<a href="single.jsp?productID=<%=p.getProductID()%>"><%=p.getProductName()%></a>
+
 								</h5>
+
 								<div class="white">
-									<a href="single.html"
+
+									<a
+										href="CartServlet?command=plus&productID=<%=p.getProductID()%>"
 										class="hvr-shutter-in-vertical hvr-shutter-in-vertical2 ">ADD
+
 										TO CART</a>
+
 									<p class="dollar">
-										<span class="in-dollar">$</span><span>2</span><span>0</span>
+
+										<span class="in-dollar">$</span><span><%=p.getProductPrice()%>></span><span>0</span>
+
 									</p>
 									<div class="clearfix"></div>
+
 								</div>
 
+
+
+
 							</div>
+
 						</div>
+
 					</div>
-					<div class="col-md-3 md-col">
-						<div class="col-md">
-							<a href="single.html"><img src="images/pi1.jpg" alt="" /> </a>
-							<div class="top-content">
-								<h5>
-									<a href="single.html">Bite Me</a>
-								</h5>
-								<div class="white">
-									<a href="single.html"
-										class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD
-										TO CART</a>
-									<p class="dollar">
-										<span class="in-dollar">$</span><span>3</span><span>0</span>
-									</p>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 md-col">
-						<div class="col-md">
-							<a href="single.html"><img src="images/pi2.jpg" alt="" /></a>
-							<div class="top-content">
-								<h5>
-									<a href="single.html">Little Fella</a>
-								</h5>
-								<div class="white">
-									<a href="single.html"
-										class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD
-										TO CART</a>
-									<p class="dollar">
-										<span class="in-dollar">$</span><span>5</span><span>0</span>
-									</p>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 md-col">
-						<div class="col-md">
-							<a href="single.html"><img src="images/pi3.jpg" alt="" /></a>
-							<div class="top-content">
-								<h5>
-									<a href="single.html">Astral Cruise</a>
-								</h5>
-								<div class="white">
-									<a href="single.html"
-										class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD
-										TO CART</a>
-									<p class="dollar">
-										<span class="in-dollar">$</span><span>4</span><span>5</span>
-									</p>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+
+					<%
+						}
+					%>
 					<div class="clearfix"></div>
 				</div>
 			</div>
@@ -139,90 +118,36 @@
 				<h3 class="future">LATEST</h3>
 				<div class="content-bottom-in">
 					<ul id="flexiselDemo2">
+						<%
+						for (int i = 0; i < 4; i++) {
+							Random r = new Random();
+							int rand = r.nextInt(14);
+							Product p =dao.getProduct(rand);
+						%>
 						<li><div class="col-md men">
-								<a href="single.html" class="compare-in "><img
-									src="images/pi4.jpg" alt="" />
+								<a href="single.jsp?productID=<%=p.getProductID()%>" class="compare-in "><img
+									src="<%=p.getProductImage()%>" alt="<%=p.getProductName()%>" />
 									<div class="compare in-compare">
 										<span>Add to Compare</span> <span>Add to Whislist</span>
 									</div></a>
 								<div class="top-content bag">
 									<h5>
-										<a href="single.html">Symbolic Bag</a>
+										<a href="single.jsp?productID=<%=p.getProductID()%>"><%=p.getProductName()%></a>
 									</h5>
 									<div class="white">
-										<a href="single.html"
+										<a href="CartServlet?command=plus&productID=<%=p.getProductID()%>"
 											class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD
 											TO CART</a>
 										<p class="dollar">
 											<span class="in-dollar">$</span><span>4</span><span>0</span>
 										</p>
+										<%} %>
 										<div class="clearfix"></div>
 									</div>
 								</div>
 							</div></li>
-						<li><div class="col-md men">
-								<a href="single.html" class="compare-in "><img
-									src="images/pi5.jpg" alt="" />
-									<div class="compare in-compare">
-										<span>Add to Compare</span> <span>Add to Whislist</span>
-									</div></a>
-								<div class="top-content bag">
-									<h5>
-										<a href="single.html">Interesting Read</a>
-									</h5>
-									<div class="white">
-										<a href="single.html"
-											class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD
-											TO CART</a>
-										<p class="dollar">
-											<span class="in-dollar">$</span><span>2</span><span>5</span>
-										</p>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div></li>
-						<li><div class="col-md men">
-								<a href="single.html" class="compare-in "><img
-									src="images/pi6.jpg" alt="" />
-									<div class="compare in-compare">
-										<span>Add to Compare</span> <span>Add to Whislist</span>
-									</div></a>
-								<div class="top-content bag">
-									<h5>
-										<a href="single.html">The Carter</a>
-									</h5>
-									<div class="white">
-										<a href="single.html"
-											class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD
-											TO CART</a>
-										<p class="dollar">
-											<span class="in-dollar">$</span><span>1</span><span>0</span>
-										</p>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div></li>
-						<li><div class="col-md men">
-								<a href="single.html" class="compare-in "><img
-									src="images/pi7.jpg" alt="" />
-									<div class="compare in-compare">
-										<span>Add to Compare</span> <span>Add to Whislist</span>
-									</div></a>
-								<div class="top-content bag">
-									<h5>
-										<a href="single.html">Onesie</a>
-									</h5>
-									<div class="white">
-										<a href="single.html"
-											class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">ADD
-											TO CART</a>
-										<p class="dollar">
-											<span class="in-dollar">$</span><span>6</span><span>0</span>
-										</p>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div></li>
+						
+
 
 					</ul>
 					<script type="text/javascript">

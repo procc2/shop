@@ -47,6 +47,7 @@ public class ManagerCategoryServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		String command= request.getParameter("command");
 		String categoryName = request.getParameter("categoryName");
+		long gen = Long.parseLong(request.getParameter("productGender"));
 		String url = "",error="";
 		if(categoryName.equals("")){
 			error ="Please input your category name";
@@ -55,7 +56,7 @@ public class ManagerCategoryServlet extends HttpServlet {
 		if(categoryName.length()!=0){
 			switch(command){
 			case "insert":
-				dao.insertCategory(new Category(new Date().getTime(), categoryName));
+				dao.insertCategory(new Category(new Date().getTime(), categoryName,gen));
 				url= "/admin/manager_category.jsp";
 				break;
 			case "update":

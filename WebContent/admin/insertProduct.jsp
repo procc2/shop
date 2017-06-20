@@ -35,6 +35,7 @@
 				<%} %>
 			</td></tr>
 			<tr><td width="125px"><b>Product Price</b></td><td><input type="text" name="productPrice" class="pendek"></td></tr>
+			<tr><td width="125px"><b>Product Gender</b></td><td><input type="text" name="productGender" class="pendek"></td></tr>
 			<tr><td width="125px"><b>Product Image</b></td><td><input type="file" class="pendek" name = "productImage"></td></tr>
 			<tr><td><b>Product Description</b></td><td><textarea class="form-textarea" name="productDes" id="content"></textarea>
 			<script type="text/javascript" language="javascript">

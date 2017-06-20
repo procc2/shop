@@ -33,8 +33,9 @@
 					<th class="data">Product ID</th>
 					<th class="data">Category ID</th>
 					<th class="data">Product Name</th>
-					<th class="data">Product Image Link</th>
+					<th class="data" width="30px">Product Image Link</th>
 					<th class="data">Product Price</th>
+					<th class="data">Product Gender</th>
 					<th class="data" width="75px">Option</th>
 				</tr>
 				<%
@@ -49,8 +50,9 @@
 					<td class="data"><%=p.getProductID() %></td>
 					<td class="data"><%=c.getCategoryID() %></td>
 					<td class="data"><%=p.getProductName() %></td>
-					<td class="data"><%=p.getProductImage() %></td>
+					<td class="data" width="30px"><%=p.getProductImage() %></td>
 					<td class="data"><%=p.getProductPrice() %></td>
+					<td class="data"><%=p.getProductGender() %></td>
 					<td class="data" width="90px">
 						<center>
 							<a href="/demo/admin/updateProduct.jsp?command=updateP&productID=<%=p.getProductID()%>"><img src="../img/icon-left.png"></a>&nbsp;&nbsp; | &nbsp;&nbsp;

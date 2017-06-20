@@ -26,8 +26,9 @@
 			<table class="data">
 				<tr class="data">
 					<th class="data" width="30px">No</th>
-					<th class="data">Category</th>
 					<th class="data">Category Name</th>
+					<th class="data">Category</th>
+					<th class="data">Product Gender</th>
 					<th class="data" width="90px">Option</th>
 				</tr>
 				<%
@@ -39,6 +40,7 @@
 					<td class="data" width="30px"><%=count %></td>
 					<td class="data"><%=c.getCategoryID() %></td>
 					<td class="data"><%=c.getCategoryName() %></td>
+					<td class="data"><%=c.getProductGender() %></td>
 					<td class="data" width="90px">
 						<center>
 							<a href="/demo/admin/updateCategory.jsp?command=update&categoryID=<%=c.getCategoryID()%>"><img src="../img/icon-left.png"></a>&nbsp;&nbsp; | &nbsp;&nbsp;

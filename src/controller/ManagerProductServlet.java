@@ -53,7 +53,7 @@ public class ManagerProductServlet extends HttpServlet {
 		String productImage = request.getParameter("productImage");
 		double productPrice = Double.parseDouble(request.getParameter("productPrice"));
 		String productDes = request.getParameter("productDes");
-		long productGen= Long.parseLong(request.getParameter("productGen"));
+		long productGen= Long.parseLong(request.getParameter("productGender"));
 		String url = "",errorN="";
 		if(productName.equals("")){
 			errorN ="Please input your product name";

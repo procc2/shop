@@ -27,6 +27,7 @@
 				<input type="radio" name="categoryID" id="radio" value="5">Xiaomi
 			</td></tr>
 			<tr><td width="125px"><b>Product Price</b></td><td><input type="text" name="productPrice" class="pendek"></td></tr>
+			<tr><td width="125px"><b>Product Gender</b></td><td><input type="text" name="productGender" class="pendek"></td></tr>
 			<tr><td width="125px"><b>Product Image</b></td><td><input type="file" class="pendek" name = "productImage"></td></tr>
 			<tr><td><b>Textarea</b></td><td><textarea name="productDes"></textarea></td></tr>
 			<tr><td></td><td>

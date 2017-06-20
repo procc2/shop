@@ -108,23 +108,46 @@
 							<ul class="drop">
 							<%
 								for(Category e : CategoryDAO.getListCategory()){
+									if(e.getProductGender()==1){
 							%>		
 								<li><a href="product.jsp?categoryID=<%= e.getCategoryID() %>&pages=1"><%=e.getCategoryName() %></a></li>
 							<%
-								}
+								}}
 							%> 
-<!-- 								<li><a href="products.html">Sony(2)</a></li> -->
-<!-- 								<li><a href="products.html">Android(4)</a></li> -->
-<!-- 								<li><a href="products.html">Apple(7)</a></li> -->
-<!-- 								<li><a href="products.html">Acer(53)</a></li> -->
-<!-- 								<li><a href="products.html">HP(78)</a></li> -->
-<!-- 								<li><a href="products.html">Intel(5)</a></li> -->
 							</ul></li>
-						<li><a href="products.html"> Tablets</a></li>
-						<li><a href="products.html">Components</a></li>
-						<li><a href="products.html">Software</a></li>
-						<li><a href="products.html">Phones & PDAs </a></li>
-						<li><a href="products.html"> Cameras </a></li>
+						<li><a href="#">Smartphone</a>
+							<ul class="drop">
+							<%
+								for(Category e : CategoryDAO.getListCategory()){
+									if(e.getProductGender()==2){
+							%>		
+								<li><a href="product.jsp?categoryID=<%= e.getCategoryID() %>&pages=1"><%=e.getCategoryName() %></a></li>
+							<%
+								}}
+							%> 
+							</ul></li>
+						<li><a href="#">Tablet</a>
+							<ul class="drop">
+							<%
+								for(Category e : CategoryDAO.getListCategory()){
+									if(e.getProductGender()==3){
+							%>		
+								<li><a href="product.jsp?categoryID=<%= e.getCategoryID() %>&pages=1"><%=e.getCategoryName() %></a></li>
+							<%
+								}}
+							%> 
+							</ul></li>
+						<li><a href="#">Camera</a>
+							<ul class="drop">
+							<%
+								for(Category e : CategoryDAO.getListCategory()){
+									if(e.getProductGender()==4){
+							%>		
+								<li><a href="product.jsp?categoryID=<%= e.getCategoryID() %>&pages=1"><%=e.getCategoryName() %></a></li>
+							<%
+								}}
+							%> 
+							</ul></li>
 						<li><a href="contact.jsp">Contact </a></li>
 
 					</ul>
